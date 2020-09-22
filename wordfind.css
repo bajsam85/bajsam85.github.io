@@ -1,0 +1,389 @@
+/**
+* Wordfind.js 0.0.1
+* (c) 2012 Bill, BunKat LLC.
+* Wordfind is freely distributable under the MIT license.
+* For all details and documentation:
+*     http://github.com/bunkat/wordfind
+*/
+
+body {
+  font: 1em serif;
+}
+
+p {
+  font: 22pt serif;
+  margin: 20px 20px 0px 20px;
+}
+
+h1 {
+  text-align: center;
+/* to center #puzzle on small devices */
+}
+
+#main {
+  margin: 0 auto;
+  max-width: 80rem;
+  text-align: center; /* to center #puzzle on small devices */
+}
+@media only screen and (min-width: 600px) {
+  #main {
+    text-align: left;
+  }
+}
+
+/**
+* Styles for the puzzle
+*/
+#puzzle {
+  display: inline-block;
+  border: 1px solid black;
+  padding: 3vw;
+}
+
+#puzzle > div { /* rows */
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* style for each square in the puzzle */
+.puzzleSquare {
+  height: 7vw;
+  width: 7vw;
+  /*text-transform: uppercase*/
+  background-color: white;
+  border: 0;
+  font: 5vw Serif;
+}
+@media only screen and (min-width: 600px) {
+  #puzzle {
+    float: left;
+    padding: 1rem;
+  }
+  .puzzleSquare {
+    height: 2.9rem;
+    width: 2.9rem;
+    font: 1.5rem Serif;
+  }
+}
+
+button::-moz-focus-inner {
+  border: 0;
+}
+
+/* indicates when a square has been selected */
+#puzzle .selected {
+  background-color: lightcoral;
+    
+}
+
+/* indicates that the square is part of a word that has been found */ 
+#puzzle .found0 {
+
+  background-color: coral;
+
+  color: black;
+
+   
+
+}
+
+#puzzle .found1 {
+
+  background-color: indianred;
+
+  color: black;
+
+   
+
+}
+
+#puzzle .found2 {
+
+  background-color: brown;
+
+  color: black;
+
+   
+
+}
+
+#puzzle .found3 {
+
+  background-color: chartreuse;
+
+  color: black;
+
+   
+
+}
+
+#puzzle .found4 {
+
+  background-color: seagreen;
+
+  color: black;
+
+   
+
+}
+
+#puzzle .found5 {
+
+  background-color: lightpink;
+
+  color: black;
+
+   
+
+}
+
+#puzzle .found6{
+
+  background-color: chartreuse;
+
+  color: black;
+
+   
+
+}
+
+#puzzle .found7 {
+
+  background-color: cadetblue;
+
+  color: black;
+
+   
+
+}
+
+#puzzle .found8 {
+
+  background-color: rosybrown;
+
+  color: black;
+
+   
+
+}
+
+#puzzle .found9{
+
+  background-color: lightsalmon;
+
+  color: black;
+
+   
+
+}
+
+#puzzle .found10 {
+
+  background-color: lightskyblue;
+
+  color: black;
+
+   
+
+}
+
+ 
+
+#puzzle .found11 {
+
+  background-color: lightseagreen;
+
+  color: black;
+
+   
+
+}
+
+#puzzle .found12 {
+
+  background-color: lightcoral;
+
+  color: black;
+
+   
+
+}
+
+#puzzle .found13 {
+
+  background-color: darkred;
+
+  color: black;
+
+   
+
+}
+
+#puzzle .found14 {
+
+  background-color: cyan;
+
+  color: black;
+
+   
+
+}
+
+ 
+
+#puzzle .found15 {
+
+  background-color: khaki;
+
+  color: black;
+
+   
+
+}
+
+ 
+
+#puzzle .found16 {
+
+  background-color: royalblue;
+
+  color: black;
+
+   
+
+}
+
+#puzzle .found17 {
+
+  background-color: peachpuff;
+
+  color: black;
+
+   
+
+}
+
+#puzzle .found18 {
+
+  background-color: turquoise;
+
+  color: black;
+
+   
+
+}
+
+#puzzle .found19 {
+
+  background-color: fuchsia;
+
+  color: black;
+
+   
+
+}
+
+#puzzle .found20 {
+
+  background-color: yellow;
+
+  color: black;
+
+   
+
+}
+
+#puzzle .found21 {
+
+  background-color: greenyellow;
+
+  color: black;
+
+ 
+
+    
+
+}
+#puzzle .solved {
+  
+  color: black;
+border-radius: 3px;
+}
+
+
+
+
+
+/* indicates that all words have been found */
+#puzzle .complete {
+  background-color: green;
+}
+
+/**
+* Styles for the word list
+*/
+#words {
+  display: inline-block;
+  max-width: 30rem;
+  padding: 1em;
+  list-style-type: none;
+  text-align: left;
+}
+@media only screen and (min-width: 600px) {
+  #words {
+    -moz-column-count: 2;
+    -webkit-column-count: 2;
+    column-count: 2;
+    column-gap: 20px;
+  }
+}
+
+#words li {
+  padding: 3px 0;
+  font: 1em sans-serif;
+}
+
+/* indicates that the word has been found */
+.wordFound {
+  text-decoration: line-through;
+  color: gray;
+}
+
+/**
+* Styles for the controls
+*/
+#controls {
+  display: inline-block;
+  max-width: 30rem;
+  padding: 1em;
+  border: none;
+  text-align: left;
+}
+label {
+  white-space: nowrap;
+  margin-top: 1em;
+}
+input {
+  border: none;
+  border-bottom: 1px solid #ccc;
+  font-size: 1em;
+    
+
+}
+input[type="number"] {
+  width: 2rem;
+}
+select {
+  max-width: 10rem;
+}
+#create-grid, #solve {
+  display: block;
+  margin-top: 1rem;
+}
+#secret-word {
+  /*text-transform: uppercase;*/
+}
+
+#result-message {
+  font-size: 1.2em;
+}
